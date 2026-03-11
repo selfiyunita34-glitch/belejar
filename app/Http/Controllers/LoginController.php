@@ -17,27 +17,24 @@ class LoginController extends Controller
 
     public function login_proses(Request $request)
     {
-        $request->validate([
+       $login = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-        if ($user && $user->password == $request->password) {
-
-            Auth::login($user);
-
+        if (Auth::attempt($login)) {
+            $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         } else {
-
             return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('login')->with('success', 'Kamu Berhasil logout');
     }
     public function register()
