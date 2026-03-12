@@ -17,11 +17,12 @@ class MobilImport implements ToCollection
 
         foreach($collection as $row){
             if($ke > 1){
+                
 
                 $nama_mobil = !empty($row[0]) ? $row[0] : '';
 
                 if(!$nama_mobil){
-                    break;
+                    // break;
                 }
 
                 $data['user_id']            = auth()->user()->id;
