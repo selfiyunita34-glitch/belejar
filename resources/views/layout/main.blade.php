@@ -93,7 +93,7 @@
                         <span class="badge badge-danger navbar-badge">3</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        {{-- <a href="{{ route('locale', ['locale' => 'id']) }}" class="dropdown-item">
+                        <a href="{{ route('locale', ['locale' => 'id']) }}" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media"
                                 style="{{ session()->get('locale') == 'id' ? 'background-color: rgb(255, 209, 209)' : '' }}">
@@ -105,20 +105,20 @@
                                 </div>
                             </div>
                             <!-- Message End -->
-                        </a> --}}
+                        </a>
                         <div class="dropdown-divider"></div>
-                        {{-- <a href="{{ route('locale', ['locale' => 'en']) }}" class="dropdown-item"> --}}
-                        <!-- Message Start -->
-                        <div class="media"
-                            style="{{ session()->get('locale') == 'en' ? 'background-color: rgb(255, 209, 209)' : '' }}">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Bahasa Inggris
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
+                        <a href="{{ route('locale', ['locale' => 'en']) }}" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media"
+                                style="{{ session()->get('locale') == 'en' ? 'background-color: rgb(255, 209, 209)' : '' }}">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Bahasa Inggris
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Message End -->
+                            <!-- Message End -->
                         </a>
                     </div>
                 </li>
@@ -220,16 +220,20 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('logout') }}" class="nav-link"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a href="{{ route('admin.assets') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>Logout</p>
+                                <p>
+                                    Assets
+                                </p>
                             </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
                         </li>
 
                     </ul>
@@ -242,6 +246,14 @@
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.2.0
+            </div>
+        </footer>
+
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -284,8 +296,6 @@
     <script src="{{ asset('lte/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
-
-    @yield('scripts')
     <script src="{{ asset('/sw.js') }}"></script>
     <script>
         if ("serviceWorker" in navigator) {

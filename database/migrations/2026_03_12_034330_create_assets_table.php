@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mobils', function (Blueprint $table) {
+        Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('type_mobil',50)->nullable();
-            $table->string('tahun_pembelian',5)->nullable();
-            $table->bigInteger('harga_mobil')->nullable();
+            $table->string('nama_asset');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mobils');
+        Schema::dropIfExists('assets');
     }
 };

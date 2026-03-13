@@ -68,11 +68,11 @@
                                                 <td>{{ $d->email }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.user.detail', ['id' => $d->id]) }}"
-                                                        class="btn btn-info"><i class="fas fa-eye"></i>Detail</a>
+                                                        class="btn btn-info"><i class="fas fa-eye"></i> Detail</a>
                                                     <a href="{{ route('admin.user.edit', ['id' => $d->id]) }}"
-                                                        class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>
+                                                        class="btn btn-primary"><i class="fas fa-pen"></i> Edit</a>
                                                     <a data-toggle="modal" data-target="#modal-hapus{{ $d->id }}"
-                                                        class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</a>
+                                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="modal-hapus{{ $d->id }}">
@@ -86,8 +86,9 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p>Apakah kamu yakin ingin menghapus data
-                                                                user?<b>{{ $d->name }}</b></p>
+                                                            <p>Apakah kamu yakin ingin menghapus data user
+                                                                <b>{{ $d->name }}</b>
+                                                            </p>
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <form
@@ -111,7 +112,6 @@
                                     </tbody>
                                 </table>
                             </div>
-
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->

@@ -24,11 +24,24 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/forgot-password', [LoginController::class, 'forgot_password'])->name('forgot-password');
+Route::post('/forgot-password-act', [LoginController::class, 'forgot_password_act'])->name('forgot-password-act');
+
+
+Route::get('/validasi-forgot-password/{token}', [LoginController::class, 'validasi_forgot_password'])->name('validasi-forgot-password');
+Route::post('/validasi-forgot-password-act', [LoginController::class, 'validasi_forgot_password_act'])->name('validasi-forgot-password-act');
+
 Route::post('login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('register-proses', [LoginController::class, 'register_proses'])->name('register-proses');
+
+Route::get('locale/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('locale');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
@@ -36,6 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::get('/user', [HomeController::class, 'index'])->name('index');
     Route::get('/create', [HomeController::class, 'create'])->name('user.create');
     Route::post('/store', [HomeController::class, 'store'])->name('user.store');
+    Route::get('/assets', [HomeController::class, 'assets'])->name('assets');
 
     Route::get('/clientside', [DataTableController::class, 'clientside'])->name('clientside');
     Route::get('/serverside', [DataTableController::class, 'serverside'])->name('serverside');
@@ -49,4 +63,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::get('/belajar/import', [BelajarController::class, 'import'])->name('import');
 
     Route::post('/belajar/import-proses', [BelajarController::class, 'import_proses'])->name('import-proses');
+
+
 });

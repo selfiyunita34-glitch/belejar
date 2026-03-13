@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf;
 // use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
@@ -46,30 +47,30 @@ class HomeController extends Controller
         return view('index', compact('data', 'request'));
     }
 
-    // public function assets(Request $request)
-    // {
+    public function assets(Request $request)
+    {
 
-    //     $data = new User;
+        $data = new User;
 
-    //     if ($request->get('search')) {
-    //         $data = $data->where('name', 'LIKE', '%' . $request->get('search') . '%')
-    //             ->orWhere('email', 'LIKE', '%' . $request->get('search') . '%');
-    //     }
+        if ($request->get('search')) {
+            $data = $data->where('name', 'LIKE', '%' . $request->get('search') . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->get('search') . '%');
+        }
 
-    //     if ($request->get('tanggal')) {
-    //         $data = $data->where('name', 'LIKE', '%' . $request->get('search') . '%')
-    //             ->orWhere('email', 'LIKE', '%' . $request->get('search') . '%');
-    //     }
+        if ($request->get('tanggal')) {
+            $data = $data->where('name', 'LIKE', '%' . $request->get('search') . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->get('search') . '%');
+        }
 
-    //     $data = $data->get();
+        $data = $data->get();
 
-    //     if ($request->get('export') == 'pdf') {
-    //         $pdf = Pdf::loadView('pdf.assets', ['data' => $data]);
-    //         return $pdf->stream('Data Assets.pdf');
-    //     }
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('pdf.assets', ['data' => $data]);
+            return $pdf->stream('Data Assets.pdf');
+        }
 
-    //     return view('assets', compact('data', 'request'));
-    // }
+        return view('assets', compact('data', 'request'));
+    }
 
     public function create()
     {

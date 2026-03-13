@@ -9,18 +9,18 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 class RumahImport implements ToCollection
 {
     /**
-     * @param Collection $collection
-     */
+    * @param Collection $collection
+    */
     public function collection(Collection $collection)
     {
         $ke = 1;
 
-        foreach ($collection as $row) {
-            if ($ke > 1) {
+        foreach($collection as $row){
+            if($ke > 1){
 
                 $type_rumah = !empty($row[0]) ? $row[0] : '';
 
-                if (!$type_rumah) {
+                if(!$type_rumah){
                     break;
                 }
 
