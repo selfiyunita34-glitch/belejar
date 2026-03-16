@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Excel;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Crypt;
+
 // use Maatwebsite\Excel\Excel as MaatwebsiteExcel;
 
 // use Illuminate\Support\Facades\Crypt;
@@ -41,5 +43,31 @@ class BelajarController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+    public function enkripsi(Request $request)
+    {
+        $string   = "Saya suka makan sate padang";
+        $enkripsi = Crypt::encryptString($string);
+        $deskripsi = Crypt::decryptString($enkripsi);
+
+        echo "String : " . $string . "<br><br>";
+        echo "Hasil Enkripsi : " . $enkripsi . "<br><br>";
+        echo "Hasil Dekripsi : " . $deskripsi;
+
+        $params = [
+            'nama' => 'Selfi Yunita',
+            'hobby' => 'Menari',
+            'makanan_favorit' => 'Bakso dan sate padang',
+        ];
+
+        $params = Crypt::encrypt($params);
+
+        echo "<a href=" . route('enkripsi-detail', ['params' => $params]) . ">Lihat detail disini</a>";
+    }
+    public function enkripsi_detail($params)
+    {
+        $params = Crypt::decrypt($params);
+
+        dd($params);
     }
 }

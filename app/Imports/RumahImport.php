@@ -17,6 +17,7 @@ class RumahImport implements ToCollection
 
         foreach($collection as $row){
             if($ke > 1){
+                
 
                 $type_rumah = !empty($row[0]) ? $row[0] : '';
 

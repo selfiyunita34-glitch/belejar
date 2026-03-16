@@ -28,7 +28,7 @@ class LoginController extends Controller
 
     public function forgot_password_act(Request $request)
     {
-        // dd($request->all());
+
         $customMessage = [
             'email.required'    => 'Email tidak boleh kosong',
             'email.email'       => 'Email tidak valid',
@@ -96,6 +96,7 @@ class LoginController extends Controller
         if (!$getToken) {
             return redirect()->route('login')->with('failed', 'Token tidak valid');
         }
+        
 
         return view('auth.validasi-token', compact('token'));
     }
