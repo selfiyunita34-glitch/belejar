@@ -17,6 +17,7 @@ class MobilImport implements ToCollection
 
         foreach($collection as $row){
             if($ke > 1){
+                dd($row);
 
                 $nama_mobil = !empty($row[0]) ? $row[0] : '';
 

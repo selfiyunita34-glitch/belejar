@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// use App\Mail\ResetPasswordMail;
+
 use App\Mail\ResetPasswordMail;
 use App\Models\PasswordResetToken;
 use App\Models\User;
@@ -26,6 +28,7 @@ class LoginController extends Controller
 
     public function forgot_password_act(Request $request)
     {
+        // dd($request->all());
         $customMessage = [
             'email.required'    => 'Email tidak boleh kosong',
             'email.email'       => 'Email tidak valid',
@@ -49,7 +52,7 @@ class LoginController extends Controller
             ]
         );
 
-        // Mail::to($request->email)->send(new ResetPasswordMail($token));
+        Mail::to($request->email)->send(new ResetPasswordMail($token));
 
         return redirect()->route('forgot-password')->with('success', 'Kami telah mengirimkan link reset password ke email anda');
     }

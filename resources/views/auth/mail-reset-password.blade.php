@@ -2,4 +2,4 @@
 <br>
 <br>
 <a href="{{ route('validasi-forgot-password', ['token' => $token]) }}">Klik Disini</a>
-@dd($token)
+
