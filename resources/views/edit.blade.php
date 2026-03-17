@@ -21,7 +21,7 @@
         <section class="content">
             <div class="container-fluid">
                 <form action="{{ route('admin.user.update', ['id' => $data->id]) }}" method="POST"
-                     enctype="multipart/form-data">
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -91,6 +91,5 @@
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
-
     </div>
 @endsection
