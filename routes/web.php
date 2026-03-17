@@ -63,9 +63,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('user.delete');
 
 
-    Route::get('/belajar/import', [BelajarController::class, 'import'])->name('import');
-
-    Route::post('/belajar/import-proses', [BelajarController::class, 'import_proses'])->name('import-proses');
-
-
+    Route::group(['prefix' => 'belajar'], function () {
+        Route::get('/cache', [BelajarController::class, 'cache'])->name('cache');
+        Route::get('/import', [BelajarController::class, 'import'])->name('import');
+        Route::post('/import-proses', [BelajarController::class, 'import_proses'])->name('import-proses');
+    });
 });

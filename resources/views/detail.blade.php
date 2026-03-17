@@ -47,9 +47,9 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>{{ __('Type Rumah') }}</th>
-                                            <th>{{ __('Harga Rumah') }}</th>
-                                            <th>{{ __('Lokasi Rumah') }}</th>
+                                            <th>{{ __('users.type_rumah') }}</th>
+                                            <th>{{ __('users.harga_rumah') }}</th>
+                                            <th>{{ __('users.Lokasi Rumah') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
